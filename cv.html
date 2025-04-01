@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medhavi Devraj | CV</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Latin Modern Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        header {
+            border-bottom: 1px solid black;
+            padding: 30px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: normal;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #3a3a7d;
+            font-weight: normal;
+            font-size: 1.1rem;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+        nav a:hover {
+            border-bottom: 2px solid #3a3a7d;
+        }
+        .dark-mode nav a {
+            color: #7abaff;
+        }
+        main {
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .cv-container {
+            width: 80%;
+            max-width: 900px;
+            height: 90vh;
+            border: 1px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .dark-mode .cv-container {
+            border: 1px solid white;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid black;
+            font-size: 0.9rem;
+            color: #555;
+            transition: border-top 0.5s;
+        }
+        .dark-mode footer {
+            border-top: 1px solid white;
+        }
+        .dark-mode header {
+            border-bottom: 1px solid white;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #3a3a7d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dark-mode-toggle:hover {
+            background-color: #7abaff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CV</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research & Projects</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="interests.html">Interests</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <main>
+        <div class="cv-container">
+            <iframe src="/Users/medhavidevraj/Downloads/CV_Website.pdf"></iframe>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 Medhavi Devraj | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        function toggleDarkMode() {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+    
+        function applyDarkModePreference() {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+    
+        document.addEventListener("DOMContentLoaded", applyDarkModePreference);
+    </script>
+</body>
+</html>

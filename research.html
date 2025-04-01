@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Latin Modern Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        header {
+            border-bottom: 1px solid black;
+            padding: 30px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: normal;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #3a3a7d;
+            font-weight: normal;
+            font-size: 1.1rem;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+        nav a:hover {
+            border-bottom: 2px solid #3a3a7d;
+        }
+        .dark-mode nav a {
+            color: #7abaff;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+        .dark-mode header, .dark-mode footer, .dark-mode .card {
+            border-color: white;
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #3a3a7d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dark-mode-toggle:hover {
+            background-color: #7abaff;
+        
+        }
+        .main {
+            height: 125vh;
+            width: 100%;
+            padding-left: 35px;
+            display: flex;
+         }  
+              /* Cards Grid */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+       
+        .card {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .card h3 {
+            margin-top: 0;
+            font-weight: normal;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: blue;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .dark-mode .card {
+            background: #1e1e1e;
+            color: #ffffff;
+            border: 1px #1e1e1e;
+            box-shadow: 0px 4px 6px rgba(161, 159, 159, 0.1);
+        }
+    
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            transition: border-top 0.5s;
+        }
+        
+        .bottom-line {
+            width: 100%;
+            height: 1px;
+            background-color: black;
+            margin-top: 20px;
+            transition: background-color 0.5s;
+        }
+        .dark-mode .bottom-line {
+            background-color: white;
+        }
+         /* Button */
+         .read-more {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: #3a3a7d;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .read-more:hover {
+            background-color: #7abaff;
+        }
+
+        /* Modal (Pop-up Window) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 80vh;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .dark-mode .modal {
+            background: #1e1e1e;
+            color: white;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
+        .dark-mode .close-btn {
+            color: white;
+        }
+        /* Scrollable Content */
+        .modal-content {
+            width: 100%;
+            height: 90%;
+            overflow: auto;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Research & Projects</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research & Projects</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="interests.html">Interests</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <main>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Crime and Constrained Mobility: Examining the Impact of Crime on Women’s Outdoor Time in India</h3>
+                <p>Authors: Medhavi Devraj and Siddharth Chandak</p>
+                <button class="read-more" onclick="openModal('modal1')">Read More</button>
+            </div>
+            <div class="card">
+                <h3>Gendered Time Use: Do Community Food Programs Affect Women’s Labour Force Decisions?</h3>
+                <p>Authors: Medhavi Devraj and Madhumitha GI</p>
+                <button class="read-more" onclick="openModal('modal2')">Read More</button>
+            </div>
+            <div class="card">
+                <h3>Bridging the MSME Financing Gap in India: The Role of the Unified Lending Interface (ULI)
+                </h3>
+                <p>Authors: Adhiraj Singh, Dhruv Achappa, Dhvani Agarwal, Medhavi Devraj, Siddharth Chandak </p>
+                <button class="read-more" onclick="openModal('modal3')">Read More</button>
+            </div>
+            <div class="card">
+                <h3>Materializing Populism: The Crucial Role of Objects in Shaping Collective Identity and
+
+                    Rhetoric</h3>
+                <p>Author: Medhavi Devraj</p>
+                <button class="read-more" onclick="openModal('modal4')">Read More</button>
+            </div>
+            <div class="card">
+                <h3>Cancerous Crops? Populist Narratives, and the Politics of Misinformation</h3>
+                <p>Authors: Medhavi Devraj, Madhmumitha GI, John Priyanshu Singh</p>
+                <button class="read-more" onclick="openModal('modal5')">Read More</button>
+            </div>
+            <div class="card">
+                <h3>Improving the Culture of Research and Development (R&D) in State Universities and Institutes </h3>
+                <p>Authors: Medhavi Devraj, Niti Aayog officials</p>
+                <button class="read-more" onclick="openModal('modal6')">Read More</button>
+            </div>
+        </div>
+            
+    </main>
+
+    <div class="bottom-line"></div>
+
+    <footer>
+        <p>© 2025 Medhavi Devraj | All Rights Reserved</p>
+    </footer>
+    
+        <!-- Background Overlay -->
+        <div class="modal-overlay" onclick="closeModal()"></div>
+
+        <!-- Modals for each research paper -->
+        <div id="modal1" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Desktop/TUS Files Dev/Crime.pdf"></iframe> 
+            </div>
+        </div>
+    
+        <div id="modal2" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Downloads/TimeUseFinalPaper_MadhumithaMedhavi.pdf"></iframe> 
+            </div>
+        </div>
+    
+        <div id="modal3" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Downloads/Policy Brief.pdf"></iframe> 
+            </div>
+        </div>
+    
+        <div id="modal4" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Desktop/Screenshots/Medhavi_Devraj_IR-2013_endterm.pdf"></iframe> 
+            </div>
+        </div>
+    
+        <div id="modal5" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Downloads/Blog .pdf"></iframe> 
+            </div>
+        </div>
+    
+        <div id="modal6" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <iframe src="/Users/medhavidevraj/Downloads/StateUniRnD_FinalReport-Designedv3 (1)-2.pdf"></iframe> 
+            </div>
+        </div>
+    
+    
+    
+        <!-- JavaScript -->
+        <script>
+            function openModal(id) {
+                document.querySelector('.modal-overlay').style.display = 'block';
+                document.getElementById(id).style.display = 'block';
+            }
+    
+            function closeModal() {
+                document.querySelector('.modal-overlay').style.display = 'none';
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+              function toggleDarkMode() {
+              const isDarkMode = document.body.classList.toggle('dark-mode');
+              localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+            }
+    
+             function applyDarkModePreference() {
+             if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+            }
+    
+             document.addEventListener("DOMContentLoaded", applyDarkModePreference);
+        
+        </script>
+</body>
+</html>
