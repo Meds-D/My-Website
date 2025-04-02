@@ -9,8 +9,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
         
-        body {
+         body {
             font-family: 'Latin Modern Roman', serif;
+            margin: 0;
+            padding: 0;
             background-color: #ffffff;
             color: #000;
             transition: background-color 0.5s, color 0.5s;
@@ -20,7 +22,16 @@
             padding: 30px 0;
             text-align: center;
         }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: normal;
+        }
+        nav {
+            margin-top: 15px;
+        }
         nav ul {
+            list-style: none;
             padding: 0;
             text-align: center;
         }
@@ -31,16 +42,19 @@
         nav a {
             text-decoration: none;
             color: #3a3a7d;
+            font-weight: normal;
             font-size: 1.1rem;
             padding-bottom: 2px;
             border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s;
+            transition: border-bottom 0.3s ease-in-out;
         }
         nav a:hover {
             border-bottom: 2px solid #3a3a7d;
         }
-        
-       main {
+        .dark-mode nav a {
+            color: #7abaff;
+        }
+        main {
             padding: 50px 20px;
             display: flex;
             justify-content: center;
@@ -55,6 +69,9 @@
             padding: 30px;
             transition: border 0.5s;
         }
+        .dark-mode .content {
+            border: 1px solid white;
+        }
         .content img {
             width: 280px;
             height: auto;
@@ -65,6 +82,28 @@
         }
         .content img:hover {
             transform: scale(1.05);
+        }
+        .text {
+            max-width: 500px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid black;
+            font-size: 0.9rem;
+            color: #555;
+            transition: border-top 0.5s;
+        }
+        .dark-mode footer {
+            border-top: 1px solid white;
+        }
+        .dark-mode header {
+            border-bottom: 1px solid white;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
         }
         .dark-mode-toggle {
             position: fixed;
@@ -80,17 +119,6 @@
         }
         .dark-mode-toggle:hover {
             background-color: #7abaff;
-        }
-        .dark-mode {
-            background-color: #121212;
-            color: #fff;
-        }
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            text-align: center;
-            border-top: 1px solid black;
-            font-size: 0.9rem;
         }
     </style>
 </head>
