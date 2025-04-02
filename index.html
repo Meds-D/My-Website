@@ -123,14 +123,14 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Medhavi Devraj</h1>
+   <header class="border-bottom py-3 text-center">
+        <h1 class="h2">Medhavi Devraj</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research & Projects</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="interests.html">Interests</a></li>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="research.html">Research & Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+                <li class="nav-item"><a class="nav-link" href="interests.html">Interests</a></li>
             </ul>
         </nav>
     </header>
@@ -138,10 +138,12 @@
     
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     
-    <main>
-        <div class="content">
-            <img src="images/IMG_5314.jpg" alt="Your Image">
-            <div class="text">
+   <main class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="images/IMG_5314.jpg" alt="Your Image" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-8">
                 <p>I am currently pursuing an undergraduate degree at Ashoka University, majoring in Economics with a minor in Mathematics. I am deeply interested in research, and my areas of interest range from Development Economics, specifically gender-related issues, to more macroeconomic topics such as trade and firm dynamics.</p>
                 <p>I believe academia requires a fair bit of creativity. I often seek innovative ways to test economic hypotheses, whether by leveraging limited data to draw meaningful insights or devising theoretical models. This creativity also extends to more conventional artistic pursuits—my non-academic interests include filmmaking and painting.</p>
                 <p>I have made a couple of short films and documentaries, often documenting my travels. I have been painting my whole life, receiving professional training and later continuing as a self-taught artist. You can find more details about my artistic pursuits in the <a href="interests.html">Interests</a> section.</p>
@@ -149,9 +151,10 @@
         </div>
     </main>
     
-    <footer>
+    <footer class="border-top py-3 text-center">
         <p>© 2025 Medhavi Devraj | All Rights Reserved</p>
     </footer>
+    
     <script>
         function toggleDarkMode() {
             const isDarkMode = document.body.classList.toggle('dark-mode');
